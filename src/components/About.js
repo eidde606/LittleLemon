@@ -1,5 +1,4 @@
 import {
-  Box,
   Card,
   CardBody,
   CardFooter,
@@ -38,9 +37,7 @@ const About = () => {
             <p>Thank you for being a part of our journey!</p>
           </CardBody>
           <CardFooter>
-            <Box width={{ base: "100%", sm: "80%", md: "60%" }} mx="auto">
-              <Image src={footerImage} height="auto" width="30%" />
-            </Box>
+            <Image src={footerImage} height="auto" width="30%" />
           </CardFooter>
         </Card>
       </Container>
