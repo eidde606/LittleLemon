@@ -9,6 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import lemonImage from "../images/littlelemon6.png";
 
 function Header() {
@@ -33,11 +34,11 @@ function Header() {
             voluptas. Quibusdam iure commodi repellat nemo, esse ut. Voluptatem
             nulla dolor blanditiis.
           </Text>
-          <a href="/reservations">
+          <Link to="/reservations">
             <Button colorScheme="green" boxShadow="md">
               Reserve Table
             </Button>
-          </a>
+          </Link>
         </Container>
       </VStack>
       <Box
