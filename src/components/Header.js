@@ -1,56 +1,28 @@
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import lemonImage from "../images/littlelemon6.png";
+import bannerImg from "../images/restauranfood.jpg";
 
-function Header() {
-  const title = "Little Lemon";
+const Header = () => {
   return (
-    <Flex p={4} flexWrap="wrap" alignItems="center">
-      <VStack
-        spacing={4}
-        w={{ base: "100%", md: "60%" }}
-        pr={{ base: 0, md: 4 }}
-      >
-        <Container maxW="500px" textAlign="left">
-          <Text fontSize="5xl" fontWeight="bold" color="black">
-            {title}
-          </Text>
-          <Heading as="h4" size="md" color="black">
-            Chicago
-          </Heading>
-          <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam
-            perferendis eligendi ut quasi commodi excepturi ab quis temporibus
-            voluptas. Quibusdam iure commodi repellat nemo, esse ut. Voluptatem
-            nulla dolor blanditiis.
-          </Text>
-          <Link to="/reservations">
-            <Button colorScheme="green" boxShadow="md">
-              Reserve Table
-            </Button>
+    <header className="header">
+      <section>
+        <div className="banner">
+          <h2>Little Lemon</h2>
+          <h3>Chicago</h3>
+          <p>
+            We are a family owned Mediterraneran restaurant, focused on
+            traditional recipes servred with a modern twist.
+          </p>
+          <Link to="/booking">
+            <button aria-label="On Click">Reserve Table</button>
           </Link>
-        </Container>
-      </VStack>
-      <Box
-        flexShrink={0}
-        w={{ base: "100%", md: "15%" }}
-        mt={{ base: 4, md: 0 }}
-        ml={{ base: 0, md: "150px" }}
-      >
-        <Image src={lemonImage} />
-      </Box>
-    </Flex>
+        </div>
+        <div className="banner-img">
+          <img src={bannerImg} alt="" />
+        </div>
+      </section>
+    </header>
   );
-}
+};
 
 export default Header;

@@ -1,36 +1,65 @@
 import React from "react";
-import burger from "../images/burger.jpeg";
-import greekSalad from "../images/greeksalad.jpeg";
-import salad from "../images/salad.jpeg";
-import Cards from "../utils/Cards";
+import Swal from "sweetalert2";
+import recipes from "../recipes";
 
 const Menu = () => {
-  const cardsData = [
-    {
-      title: "Ceasar Salad",
-      price: "$" + 10.99,
-      content:
-        "Classic salad with romaine lettuce, croutons, Parmesan, and Caesar dressing.",
-      imageUrl: salad,
-    },
-    {
-      title: "Greek Salad",
-      price: "$" + 8.99,
-      content:
-        "Refreshing salad with tomatoes, cucumbers, olives, feta, and Greek dressing.",
-      imageUrl: greekSalad,
-    },
-    {
-      title: "CheeseBurger",
-      price: "$" + 12.99,
-      content:
-        "American favorite - beef patty with melted cheese in a bun, topped with condiments.",
-      imageUrl: burger,
-    },
-  ];
+  //   console.log(recipes[0]);
+  const handleOrder = (id) => {
+    console.log(id);
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Do you want to confirm order?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: false,
+        confirmButtonText: "Yes, order it!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            "Orderd!",
+            "Your order has been confirmed.",
+            "success"
+          );
+        }
+      });
+  };
   return (
-    <div>
-      <Cards cards={cardsData} />
+    <div className="menu-container">
+      <div className="menu-header">
+        <h2>This weeks specials!</h2>
+        <button>Online Menu</button>
+      </div>
+      <div className="cards">
+        {recipes.map((recipe) => (
+          <div key={recipe.id} className="menu-items">
+            <img src={recipe.image} alt="" />
+            <div className="menu-content">
+              <div className="heading">
+                <h5>{recipe.title}</h5>
+                <p>${recipe.price}</p>
+              </div>
+              <p>{recipe.description}</p>
+              <button
+                className="orderbtn"
+                onClick={() => handleOrder(recipe.id)}
+              >
+                Order Now
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
